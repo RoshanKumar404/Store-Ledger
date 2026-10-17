@@ -1,0 +1,19 @@
+{
+  "name": "@kirana/mobile",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
+    "lint": "echo 'lint mobile'"
+  },
+  "dependencies": {
+    "@kirana/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
