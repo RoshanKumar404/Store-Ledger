@@ -1,0 +1,162 @@
+[
+  {
+    "description": "Invalid PRODUCT_CREATE with negative price",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000021",
+      "type": "PRODUCT_CREATE",
+      "payload": {
+        "id": "018fa1b2-c000-7000-8000-000000000101",
+        "name": "Negative Price Product",
+        "unit": "kg",
+        "price_paise": -500,
+        "low_stock_milli": 0
+      }
+    }
+  },
+  {
+    "description": "Invalid PRODUCT_PATCH with unknown field (mass-assignment attempt)",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000022",
+      "type": "PRODUCT_PATCH",
+      "payload": {
+        "id": "018fa1b2-c000-7000-8000-000000000101",
+        "baseSeq": 10,
+        "deviceId": "dev_mobile_cashier_1",
+        "fields": {
+          "unknown_injected_column": "evil_val"
+        }
+      }
+    }
+  },
+  {
+    "description": "Invalid PRODUCT_PATCH with empty fields object",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000023",
+      "type": "PRODUCT_PATCH",
+      "payload": {
+        "id": "018fa1b2-c000-7000-8000-000000000101",
+        "baseSeq": 10,
+        "deviceId": "dev_mobile_cashier_1",
+        "fields": {}
+      }
+    }
+  },
+  {
+    "description": "Invalid CREATE_SALE with mathematically mismatched line total",
+    "expectedReason": "TOTAL_MISMATCH",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000024",
+      "type": "CREATE_SALE",
+      "payload": {
+        "sale": {
+          "id": "018fa1b2-c000-7000-8000-000000000305",
+          "customer_id": null,
+          "total_paise": 2500,
+          "payment": "CASH",
+          "sold_at": 1729155000000
+        },
+        "items": [
+          {
+            "id": "018fa1b2-c000-7000-8000-000000000315",
+            "sale_id": "018fa1b2-c000-7000-8000-000000000305",
+            "product_id": "018fa1b2-c000-7000-8000-000000000101",
+            "qty_milli": 1000,
+            "unit_price_paise": 2000,
+            "line_total_paise": 9999
+          }
+        ],
+        "movements": [
+          {
+            "id": "018fa1b2-c000-7000-8000-000000000325",
+            "product_id": "018fa1b2-c000-7000-8000-000000000101",
+            "delta_milli": -1000,
+            "reason": "SALE",
+            "ref_id": "018fa1b2-c000-7000-8000-000000000305",
+            "at": 1729155000000
+          }
+        ]
+      }
+    }
+  },
+  {
+    "description": "Invalid CREATE_SALE with mismatched sale total vs line total sum",
+    "expectedReason": "TOTAL_MISMATCH",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000025",
+      "type": "CREATE_SALE",
+      "payload": {
+        "sale": {
+          "id": "018fa1b2-c000-7000-8000-000000000306",
+          "customer_id": null,
+          "total_paise": 5000,
+          "payment": "CASH",
+          "sold_at": 1729155000000
+        },
+        "items": [
+          {
+            "id": "018fa1b2-c000-7000-8000-000000000316",
+            "sale_id": "018fa1b2-c000-7000-8000-000000000306",
+            "product_id": "018fa1b2-c000-7000-8000-000000000101",
+            "qty_milli": 1000,
+            "unit_price_paise": 2000,
+            "line_total_paise": 2000
+          }
+        ],
+        "movements": [
+          {
+            "id": "018fa1b2-c000-7000-8000-000000000326",
+            "product_id": "018fa1b2-c000-7000-8000-000000000101",
+            "delta_milli": -1000,
+            "reason": "SALE",
+            "ref_id": "018fa1b2-c000-7000-8000-000000000306",
+            "at": 1729155000000
+          }
+        ]
+      }
+    }
+  },
+  {
+    "description": "Invalid STOCK_COUNT with negative countedMilli",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000026",
+      "type": "STOCK_COUNT",
+      "payload": {
+        "productId": "018fa1b2-c000-7000-8000-000000000101",
+        "countedMilli": -500
+      }
+    }
+  },
+  {
+    "description": "Invalid RECORD_PAYMENT with zero amount",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000027",
+      "type": "RECORD_PAYMENT",
+      "payload": {
+        "id": "018fa1b2-c000-7000-8000-000000000505",
+        "customer_id": "018fa1b2-c000-7000-8000-000000000201",
+        "amount_paise": 0,
+        "at": 1729155300000
+      }
+    }
+  },
+  {
+    "description": "Invalid ADD_STOCK with zero delta_milli",
+    "expectedReason": "VALIDATION",
+    "op": {
+      "opId": "018fa1b2-c000-7000-8000-000000000028",
+      "type": "ADD_STOCK",
+      "payload": {
+        "id": "018fa1b2-c000-7000-8000-000000000405",
+        "product_id": "018fa1b2-c000-7000-8000-000000000101",
+        "delta_milli": 0,
+        "reason": "PURCHASE",
+        "at": 1729155200000
+      }
+    }
+  }
+]
