@@ -4,13 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import {
-  PushOpSchema,
-  calculateLineTotal,
-  calculateSaleTotal,
-  PROTOCOL_VERSION,
-  REJECT_REASON,
-} from '@kirana/shared';
+import { PushOpSchema, PROTOCOL_VERSION, REJECT_REASON } from '@kirana/shared';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

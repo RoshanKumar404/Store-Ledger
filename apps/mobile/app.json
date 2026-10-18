@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Kirana Ledger",
+    "slug": "store-ledger",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "kirana-ledger",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1F7A4D"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.storeledger.app"
+    },
+    "android": {
+      "package": "com.storeledger.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1F7A4D"
+      },
+      "allowBackup": false
+    },
+    "platforms": ["android", "ios"],
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "apiUrl": "http://10.0.2.2:3000",
+      "eas": {
+        "projectId": "kirana-ledger-store"
+      }
+    }
+  }
+}
