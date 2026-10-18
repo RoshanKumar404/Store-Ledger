@@ -11,3 +11,4 @@ All notable contract changes to op schemas, protocol constants, and synchronizat
 - Synchronous math helpers: Round-Half-Up line total calculation (`calculateLineTotal`), sale total sum (`calculateSaleTotal`), paise formatting, and IST day-boundary helpers (`getIstDayStart`, `getIstDayEnd`).
 - JSON test fixtures in `fixtures/valid-ops.json` and `fixtures/invalid-ops.json`.
 - Strict auth schemas (`RegisterRequestSchema`, `LoginRequestSchema`, `RefreshTokenRequestSchema`, `DeleteAccountRequestSchema`).
+- Standardized error response contract (`ErrorResponseSchema`, `ErrorBodySchema`) returning `{ error: { code, message } }`.

@@ -41,3 +41,4 @@ pnpm-debug.log*
 .system_generated/
 coverage/
 .nyc_output/
+documentation/
