@@ -23,6 +23,11 @@ ios/
 .env.local
 .env.*.local
 *.pem
+*.key
+*.keystore
+local.properties
+*credentials*.json
+*service-account*.json
 
 # IDE & OS
 .DS_Store
